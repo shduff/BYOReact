@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>BYOReact</title>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+</head>
+<body>
+
+	<div id='root'></div>
+
+	<script type="text/babel">
+		// const element = <h1 title="foo">Hello</h1>
+		// const element = React.createElement(
+		//   "h1",
+		//   { title: "foo" },
+		//   "Hello"
+		// )
+		const element = {
+		  type: "h1",
+		  props: {
+		    title: "foo",
+		    children: "Hello",
+		  },
+		};
+		const container = document.getElementById("root");
+		// ReactDOM.render(element, container);
+		const node = document.createElement(element.type)
+		node["title"] = element.props.title
+
+		const text = document.createTextNode("")
+		text["nodeValue"] = element.props.children
+
+		node.appendChild(text)
+		container.appendChild(node)
+	</script>
+
+</body>
+</html>
+
+<!-- 
+
+https://reactjs.org/docs/cdn-links.html
+https://babeljs.io/docs/en/babel-standalone
+
+ -->
